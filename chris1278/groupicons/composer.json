@@ -24,5 +24,12 @@
         "soft-require": {
             "phpbb/phpbb": ">=3.2.10,<3.4.0@dev"
         }
+		,
+		"version-check": {
+			"host": "raw.githubusercontent.com",
+			"directory": "/chris1278/groupicons/main",
+			"filename": "groupicons.json",
+			"ssl": true
+		}
     }
 }
