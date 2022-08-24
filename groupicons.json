@@ -1,0 +1,11 @@
+{
+	"stable": {
+		"1.0": {
+			"current": "1.0.0",
+			"download": "folgt",
+			"announcement": "folgt",
+			"eol": null,
+			"security": false
+		}
+	}
+}
