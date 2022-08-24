@@ -1,0 +1,105 @@
+{% INCLUDECSS '@chris1278_groupicons/css/groupicons_acp.css' %}
+{% include 'overall_header.html' %}
+
+	<h1>{{ lang('ACP_GROUPICONS') }}</h1>
+	<p>{{ ACP_GROUPICONS_INFO }}</p>
+	
+	{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+	{% endif %}
+
+	<script>
+	// <![CDATA[
+		function update_image(newimage)
+		{
+			document.getElementById('groupico').src = (newimage) ? "{GROUPICONSURL}/" + encodeURI(newimage) : "./images/spacer.gif";
+		}
+
+	// ]]>
+	</script>
+	<form id="chris1278_groupicons_acp" name="chris1278_groupicons_acp" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<dl>
+			<dt><label>{{ lang('GROUP_ICONS_SWITCH') ~ lang('COLON') }}</label><br /><span>{{ lang('GROUP_ICONS_SWITCH_EXPLAIN') }}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="group_groupicons_switch" value="1" {% if GROUP_ICONS_SWITCH %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="group_groupicons_switch" value="0" {% if not GROUP_ICONS_SWITCH %}checked="checked" {% endif %}/> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+	</p>
+	{S_FORM_TOKEN}
+	<fieldset>
+		<div class="iconsave">
+			<legend>{{ lang('ACP_ICON_SAVE') }}</legend>
+			<p>{{ lang('ACP_ICON_SAVE_EXPLAIN') }}</p>
+		</div>
+		<dl>
+			<dt><label>{{ lang('ACP_GROUP_SELECTION') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_GROUP_SELECTION_EXPLAIN') }}</span></dt>
+			<dd><select name="groupicons_group_selection" id="groupicons_group_selection">
+					{% for options in loops.groupicons_group_selection %}
+						<option value="{{ options.GROUPICON_GROUP_NAME }}" selected="selected">{{ options.GROUPICON_GROUP_NAME_FORM }}</option>
+					{% endfor %}
+				</select>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_ICON_FILENAME') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_ICON_FILENAME_EXPLAIN') }}</span></dt>
+			<dd>
+				{% if ICONS_DROPDWON %}
+					<select name="group_icon" id="group_icon"  onchange="update_image(this.options[selectedIndex].value);">
+					{% for options in loops.groupicons_group_file %}
+						<option value="{{ options.GROUPICON_FILE }}" selected="selected">{{ options.GROUPICON_FILE }}</option>
+					{% endfor %}
+					</select>
+				{% else %}
+					{{ lang('ACP_ICON_NO_FILENAME') }}		
+				{% endif %}
+			</dd>
+			<dd><img src="{GROUP_ICON}" id="groupico" alt="" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_ICON_PIXEL') ~ lang('COLON') }}</label><br><span>{{ lang('ACP_ICON_PIXEL_EXPLAIN') }}</span></dt>
+			<dd><input type="number" name="icon_max_pixel" min="1" value="16"></dd>
+		</dl>
+		<p class="submit-buttons">
+		<input class="button1" type="submit" id="update_group_icon" name="update_group_icon" value="{{ lang('ACP_SAVE') }}" />
+		</p>
+		{S_FORM_TOKEN}
+	</fieldset>
+	
+	
+		
+	<table class="table_counter">
+		<caption>{{ lang('ACP_GROUP_ICONS_OVERVIEW') }}</caption>
+		<col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" />
+		<thead>
+			<tr>
+				<th>{{ lang('ACP_LANG_GRUPPE') }}</th>
+				<th>{{ lang('ACP_LANG_ICON_PREVIEW') }}</th>
+				<th>{{ lang('ACP_LANG_ICON_PIXEL') }}</th>
+				<th>{{ lang('ACP_LANG_ICON_FILE') }}</th>
+				<th>{{ lang('ACP_DELETE') }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for options in loops.group_icons_display %}
+			<tr>
+				<td>{{ options.OVERVIEW_GROUPICON_GROUP_NAME_FORM }}</td>
+				<td>{{ options.OVERVIEW_GROUPICON_GROUP_ICON_PIC }}</td>
+				<td>{{ options.OVERVIEW_GROUPICON_GROUP_ICON_PIXEL }}</td>
+				<td>{{ options.OVERVIEW_GROUPICON_GROUP_ICON }}</td>
+				<td><button class="del_button" type="submit"  name="delete_icon_entry" value="{{ options.OVERVIEW_GROUPICON_GROUP_NAME }}">{{ lang('DELETE') }}</button></td>		
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</form>
+{% include 'overall_footer.html' %}

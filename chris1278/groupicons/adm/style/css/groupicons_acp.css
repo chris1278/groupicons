@@ -1,0 +1,61 @@
+.col1 {
+	background-color: #DCEBFE;
+}
+
+.col2 {
+	width: 5%;
+	text-align: center;
+	background-color: #81DAF5;
+}
+
+.col3 {
+	text-align: center;
+	background-color: #31B4045E;
+	width: 5%;
+}
+
+.col4 {
+	background-color: #31B4045E;
+}
+
+.col5 {
+	background-color: #31B4045E;
+	width: 5%;
+	text-align: center;;
+}
+
+
+
+.col1, .col2, .col3 {
+	font-weight: bold;
+}
+
+.groupicon_fa {
+	font-size: 16px;
+	color: #AA0000;
+}
+
+@media only screen and (max-width: 700px), only screen
+{
+	table.responsive td > dfn {
+		color: #000000;
+		font-weight: bolder;
+	}
+}
+
+.del_button {
+  font-weight: bold;
+  border: 1px solid #666666;
+  width: auto !important;
+  padding: 2.5px 5px;
+  font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+  color: #000;
+  font-size: 10px;
+  background: #EFEFEF  url("images/bg_button.gif") repeat-x top;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.iconsave {
+	text-align: center;
+}

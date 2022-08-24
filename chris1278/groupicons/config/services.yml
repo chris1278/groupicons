@@ -1,0 +1,26 @@
+services:
+   chris1278.groupicons.controller.acp:
+        class: chris1278\groupicons\controller\acp_controller
+        arguments:
+            - '@service_container'
+            - '@config'
+            - '@template'
+            - '@dbal.conn'
+            - '@request'
+            - '@language'
+            - '%core.root_path%'
+   chris1278.groupicons.listener:
+        class: chris1278\groupicons\event\listener
+        arguments:
+            - '@service_container'
+            - '@request'
+            - '@config'
+            - '@template'
+            - '@auth'
+            - '@dbal.conn'
+            - '@user'
+            - '%core.php_ext%'
+            - '%core.root_path%'
+        tags:
+            - { name: event.listener }
+
