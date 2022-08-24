@@ -2,7 +2,7 @@
 	"stable": {
 		"1.0": {
 			"current": "1.0.0",
-			"download": "https://github.com/chris1278/groupicons/tree/main",
+			"download": "https://github.com/chris1278/groupicons/releases",
 			"announcement": "https://github.com/chris1278/groupicons/tree/main",
 			"eol": null,
 			"security": false
