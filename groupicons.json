@@ -2,8 +2,8 @@
 	"stable": {
 		"1.0": {
 			"current": "1.0.0",
-			"download": "folgt",
-			"announcement": "folgt",
+			"download": "https://github.com/chris1278/groupicons/tree/main",
+			"announcement": "https://github.com/chris1278/groupicons/tree/main",
 			"eol": null,
 			"security": false
 		}
